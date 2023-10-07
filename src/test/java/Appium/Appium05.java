@@ -1,8 +1,8 @@
 package Appium;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
@@ -34,26 +34,26 @@ public class Appium05 {
        // capabilities.setCapability("noReset", true);
 
        // ESKI===>>> AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wb/hub"),capabilities);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723"),capabilities);
+        AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),capabilities);
 
-        MobileElement num1=driver.findElementById("com.google.android.calculator:id/digit_1");
-        MobileElement num2=driver.findElementById("com.google.android.calculator:id/digit_2");
-        MobileElement num3=driver.findElementById("com.google.android.calculator:id/digit_3");
-        MobileElement num4=driver.findElementById("com.google.android.calculator:id/digit_4");
-        MobileElement num5=driver.findElementById("com.google.android.calculator:id/digit_5");
-        MobileElement num6=driver.findElementById("com.google.android.calculator:id/digit_6");
-        MobileElement num7=driver.findElementById("com.google.android.calculator:id/digit_7");
-        MobileElement num8=driver.findElementById("com.google.android.calculator:id/digit_8");
-        MobileElement num9=driver.findElementById("com.google.android.calculator:id/digit_9");
-        MobileElement num0=driver.findElementById("com.google.android.calculator:id/digit_0");
+        WebElement num1=driver.findElement(By.id("com.google.android.calculator:id/digit_1"));
+        WebElement num2=driver.findElement(By.id("com.google.android.calculator:id/digit_2"));
+        WebElement num3=driver.findElement(By.id("com.google.android.calculator:id/digit_3"));
+        WebElement num4=driver.findElement(By.id("com.google.android.calculator:id/digit_4"));
+        WebElement num5=driver.findElement(By.id("com.google.android.calculator:id/digit_5"));
+        WebElement num6=driver.findElement(By.id("com.google.android.calculator:id/digit_6"));
+        WebElement num7=driver.findElement(By.id("com.google.android.calculator:id/digit_7"));
+        WebElement num8=driver.findElement(By.id("com.google.android.calculator:id/digit_8"));
+        WebElement num9=driver.findElement(By.id("com.google.android.calculator:id/digit_9"));
+        WebElement num0=driver.findElement(By.id("com.google.android.calculator:id/digit_0"));
 
-        MobileElement plusSign=driver.findElementById("com.google.android.calculator:id/op_add");
-        MobileElement minusSign=driver.findElementById("com.google.android.calculator:id/op_sub");
-        MobileElement multiplySign=driver.findElementById("com.google.android.calculator:id/op_mul");
-        MobileElement divideSign=driver.findElementById("com.google.android.calculator:id/op_div");
+        WebElement plusSign=driver.findElement(By.id("com.google.android.calculator:id/op_add"));
+        WebElement minusSign=driver.findElement(By.id("com.google.android.calculator:id/op_sub"));
+        WebElement multiplySign=driver.findElement(By.id("com.google.android.calculator:id/op_mul"));
+        WebElement divideSign=driver.findElement(By.id("com.google.android.calculator:id/op_div"));
 
-        MobileElement equalSign=driver.findElementById("com.google.android.calculator:id/eq");
-        MobileElement deleteSign=driver.findElementById("com.google.android.calculator:id/del");
+        WebElement equalSign=driver.findElement(By.id("com.google.android.calculator:id/eq"));
+        WebElement deleteSign=driver.findElement(By.id("com.google.android.calculator:id/del"));
 
 
         //64+71=135
@@ -65,13 +65,13 @@ public class Appium05 {
         Thread.sleep(2000);
 
 
-        MobileElement preResult=driver.findElementById("com.google.android.calculator:id/result_preview");
+        WebElement preResult=driver.findElement(By.id("com.google.android.calculator:id/result_preview"));
         String stringPreResult=preResult.getText();
         equalSign.click();
 
         Thread.sleep(1000);
 
-        MobileElement finalResult=driver.findElementById("com.google.android.calculator:id/result_final");
+        WebElement finalResult=driver.findElement(By.id("com.google.android.calculator:id/result_final"));
 
 
         assertEquals(stringPreResult, finalResult.getText());

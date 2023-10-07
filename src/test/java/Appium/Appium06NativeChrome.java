@@ -1,8 +1,9 @@
 package Appium;
 
-import io.appium.java_client.MobileElement;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
@@ -41,13 +42,15 @@ public class Appium06NativeChrome {
        // capabilities.setCapability("noReset", true);
 
        // ESKI===>>> AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wb/hub"),capabilities);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723"),capabilities);
+        AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),capabilities);
 
         System.out.println(driver.getContext()+"<======== native or web");
 
         Set<String> allTypes = driver.getContextHandles();
 
         System.out.println(allTypes);
+
+        Thread.sleep(2000);
 
        /*for(String w : allTypes){
             System.out.println(w);
@@ -56,7 +59,7 @@ public class Appium06NativeChrome {
             }
         }*/
 
-        driver.context("WEBVIEW_Terrace");
+        driver.context("WEBVIEW_chrome");
 
 
         driver.get("https://www.amazon.co.uk");
@@ -67,7 +70,10 @@ public class Appium06NativeChrome {
 
         System.out.println(driver.getCurrentUrl());
 
-        MobileElement signInButton= driver.findElementByAccessibilityId("Sign in ›");
+        //WebElement continueRejectCookie= driver.findElementById("sp-cc-rejectall-container");
+
+    //    MobileElement signInButton= driver.findElementById("nav-logobar-greeting");
+        WebElement signInButton= driver.findElement(AppiumBy.accessibilityId("Sign in ›"));
         signInButton.click();
 
 

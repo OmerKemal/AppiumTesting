@@ -1,6 +1,5 @@
 package Appium;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.CapabilityType;
@@ -30,7 +29,7 @@ public class Appium01 {
 
 
        // ESKI===>>> AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wb/hub"),capabilities);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723"),capabilities);
+        AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),capabilities);
 
     }
 }
