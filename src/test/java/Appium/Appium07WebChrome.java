@@ -11,10 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
-public class Appium06NativeChrome {
+public class Appium07WebChrome {
     @Test
     public void test() throws MalformedURLException, InterruptedException {
 
@@ -27,9 +26,10 @@ public class Appium06NativeChrome {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "R58M250L4FN");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
-        capabilities.setCapability("appPackage", "com.android.chrome");
-        capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+        //capabilities.setCapability("appPackage", "com.android.chrome");
+        //capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
         //capabilities.setCapability("autoWebview", true);
 
         //capabilities.setCapability("chromedriverExecutable", "\"C:\\Users\\User\\Downloads\\chromeDriver\\chromedriver.exe\"");
@@ -52,12 +52,12 @@ public class Appium06NativeChrome {
 
         Thread.sleep(5000);
 
-       /*for(String w : allTypes){
+       for(String w : allTypes){
             System.out.println(w);
             if (w.contains("WEBVIEW")){
                 driver.context(w);
             }
-        }*/
+        }
 
        // driver.context("WEBVIEW_chrome");
 
@@ -70,15 +70,23 @@ public class Appium06NativeChrome {
 
         Thread.sleep(3000);
 
+        System.out.println(driver.getContext()+"<======== son durum native or web");
+
        // System.out.println(driver.getCurrentUrl());
         // neden getCurrentURL yapmiyor anlamadim
-
+        
 
         //WebElement continueRejectCookie= driver.findElementById("sp-cc-rejectall-container");
 
     //    MobileElement signInButton= driver.findElementById("nav-logobar-greeting");
-        WebElement signInButton= driver.findElement(AppiumBy.accessibilityId("Sign in ›"));
-        signInButton.click();
+      WebElement signInButton= driver.findElement(AppiumBy.xpath("//a[contains(text(),' Sign in ›')]"));
+      signInButton.click();
+
+      //Chrome driver executable 3. derste
+
+        WebElement welcomeTitle=driver.findElement(AppiumBy.xpath("//h2[contains(text(),' Welcome')]"));
+        assertTrue(welcomeTitle.isDisplayed());
+
 
 
 
